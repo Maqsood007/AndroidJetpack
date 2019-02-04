@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_graph_content">
+
+
+    <fragment
+        android:id="@+id/home2Fragment"
+        android:name="com.google.samples.apps.sunflower.tabbed.home.Home2Fragment"
+        android:label="fragment_home2"
+        tools:layout="@layout/fragment_home2" />
+
+
+</navigation>
