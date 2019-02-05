@@ -3,12 +3,13 @@ package com.google.samples.apps.sunflower.tabbed
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentPagerAdapter
 import androidx.fragment.app.FragmentStatePagerAdapter
 import androidx.navigation.findNavController
 import com.google.samples.apps.sunflower.TabbedActivity
 
 
-class ContainerPagerAdapter(fragmentManager: FragmentManager, var  activity: TabbedActivity) : FragmentStatePagerAdapter(fragmentManager) {
+class ContainerPagerAdapter(fragmentManager: FragmentManager, var  activity: TabbedActivity) : FragmentPagerAdapter(fragmentManager) {
 
 
   override fun getItem(position: Int): Fragment {

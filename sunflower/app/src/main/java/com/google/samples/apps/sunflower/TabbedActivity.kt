@@ -2,9 +2,16 @@ package com.google.samples.apps.sunflower
 
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
+import android.view.View
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.Navigation
+import androidx.navigation.Navigation.findNavController
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.NavigationUI
+import androidx.navigation.ui.navigateUp
 import androidx.viewpager.widget.ViewPager
 import com.google.samples.apps.sunflower.tabbed.ContainerPagerAdapter
 import com.google.samples.apps.sunflower.tabbed.DashboardFragment
@@ -20,16 +27,16 @@ class TabbedActivity : AppCompatActivity() , ViewPager.OnPageChangeListener,Dash
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
-            R.id.navigation_home -> {
+            R.id.homeFragment -> {
                 viewPager.currentItem = 0;
                 return@OnNavigationItemSelectedListener true
             }
-            R.id.navigation_dashboard -> {
+            R.id.dashboardFragment -> {
                 viewPager.currentItem = 1;
 
                 return@OnNavigationItemSelectedListener true
             }
-            R.id.navigation_notifications -> {
+            R.id.notificationFragment -> {
                 viewPager.currentItem = 2;
 
                 return@OnNavigationItemSelectedListener true
@@ -44,11 +51,26 @@ class TabbedActivity : AppCompatActivity() , ViewPager.OnPageChangeListener,Dash
 
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
 
+        setSupportActionBar(toolbar)
+
         viewPager.offscreenPageLimit = 3
         viewPager.addOnPageChangeListener(this)
         viewPager.adapter = ContainerPagerAdapter(supportFragmentManager, this)
 
+//        val navigation = findViewById<View>(R.id.navigation) as BottomNavigationView
+//        val navController = Navigation.findNavController(this, R.id.mainNavigationFragment)
+//        NavigationUI.setupWithNavController(navigation, navController)
 
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+       Log.v("onSupportNavigateUp", "")
+        return true;
+    }
+
+    override fun onBackPressed() {
+
+        super.onBackPressed()
     }
 
     override fun onPageScrollStateChanged(state: Int) {
