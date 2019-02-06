@@ -63,9 +63,11 @@ class TabbedActivity : AppCompatActivity() , ViewPager.OnPageChangeListener,Dash
 
     }
 
-    override fun onSupportNavigateUp(): Boolean {
-       Log.v("onSupportNavigateUp", "")
-        return true;
+
+
+    override fun onSupportNavigateUp(): Boolean{
+        Log.d("","")
+        return false
     }
 
     override fun onBackPressed() {

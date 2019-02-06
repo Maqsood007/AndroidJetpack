@@ -56,6 +56,11 @@ class HomeFragment : Fragment() {
 
         NavigationUI.setupWithNavController((activity as TabbedActivity).toolbar, navController)
 
+//        (activity as TabbedActivity).supportFragmentManager.beginTransaction()
+//                .add(R.id.tab_1_nav_host_fragment, navHostFragment)
+//                .setPrimaryNavigationFragment(navHostFragment) // this is the equivalent to app:defaultNavHost="true"
+//                .commit()
+
     }
 
 }

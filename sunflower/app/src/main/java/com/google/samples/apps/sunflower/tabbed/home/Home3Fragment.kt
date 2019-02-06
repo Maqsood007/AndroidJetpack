@@ -43,25 +43,25 @@ class Home3Fragment : Fragment() {
     }
 
 
-    override fun onResume() {
-        super.onResume()
-
-        if (view == null) {
-            return
-        }
-
-        view!!.isFocusableInTouchMode = true
-        view!!.requestFocus()
-        view!!.setOnKeyListener(object : View.OnKeyListener {
-            override fun onKey(v: View, keyCode: Int, event: KeyEvent): Boolean {
-
-                return if (event.getAction() === KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK) {
-                    // handle back button's click listener
-                    Navigation.findNavController(v).navigateUp()
-                    true
-                } else false
-            }
-        })
-    }
+//    override fun onResume() {
+//        super.onResume()
+//
+//        if (view == null) {
+//            return
+//        }
+//
+//        view!!.isFocusableInTouchMode = true
+//        view!!.requestFocus()
+//        view!!.setOnKeyListener(object : View.OnKeyListener {
+//            override fun onKey(v: View, keyCode: Int, event: KeyEvent): Boolean {
+//
+//                return if (event.getAction() === KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK) {
+//                    // handle back button's click listener
+//                    Navigation.findNavController(v).navigateUp()
+//                    true
+//                } else false
+//            }
+//        })
+//    }
 
 }

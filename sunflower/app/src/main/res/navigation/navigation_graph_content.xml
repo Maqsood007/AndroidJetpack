@@ -25,7 +25,15 @@
             android:id="@+id/deepLink"
             android:autoVerify="true"
             app:uri="app://detailPage.android.com" />
+        <action
+            android:id="@+id/action_home3Fragment_to_home4Fragment"
+            app:destination="@id/home4Fragment" />
     </fragment>
+    <fragment
+        android:id="@+id/home4Fragment"
+        android:name="com.google.samples.apps.sunflower.Home4Fragment"
+        android:label="fragment_home4"
+        tools:layout="@layout/fragment_home4" />
 
 
 </navigation>

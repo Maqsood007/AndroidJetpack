@@ -12,6 +12,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/MyAppTheme">
+        <activity android:name=".activitynavhost.NavHostActivity">
+
+
+
+        </activity>
         <activity
             android:name=".TabbedActivity"
             android:label="@string/title_activity_tabbed"
@@ -19,15 +24,18 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.google.samples.apps.sunflower.GardenActivity" />
-        </activity>
-        <activity
-            android:name=".GardenActivity"
-            android:theme="@style/MyAppTheme">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+        </activity>
+        <activity
+            android:name=".GardenActivity"
+            android:theme="@style/MyAppTheme">
+
         </activity>
     </application>
 
