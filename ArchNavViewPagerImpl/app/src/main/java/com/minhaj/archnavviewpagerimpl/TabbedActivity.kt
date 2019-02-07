@@ -42,7 +42,7 @@ class TabbedActivity : AppCompatActivity(), ViewPager.OnPageChangeListener,
                 toolbar.setTitle("DashboardFragment")
                 return@OnNavigationItemSelectedListener true
             }
-            R.id.notificationFragment -> {
+            R.id.notificationFragmentgit -> {
                 viewPager.currentItem = 2;
                 toolbar.setTitle("NotificationFragment")
                 return@OnNavigationItemSelectedListener true
