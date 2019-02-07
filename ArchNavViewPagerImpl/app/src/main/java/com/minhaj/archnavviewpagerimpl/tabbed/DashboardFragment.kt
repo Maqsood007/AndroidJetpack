@@ -1,4 +1,4 @@
-package com.google.samples.apps.sunflower.tabbed
+package com.minhaj.archnavviewpagerimpl.tabbed
 
 import android.content.Context
 import android.net.Uri
@@ -7,8 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-
-import com.google.samples.apps.sunflower.R
+import com.minhaj.archnavviewpagerimpl.R
 
 
 class DashboardFragment : Fragment() {

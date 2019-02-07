@@ -1,4 +1,4 @@
-package com.google.samples.apps.sunflower.tabbed.home
+package com.minhaj.archnavviewpagerimpl.tabbed.home
 
 
 import android.os.Bundle
@@ -11,7 +11,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.get
 
-import com.google.samples.apps.sunflower.R
+import com.minhaj.archnavviewpagerimpl.R
 import kotlinx.android.synthetic.main.fragment_home1.*
 
 // TODO: Rename parameter arguments, choose names that match
@@ -37,8 +37,9 @@ class Home1Fragment : Fragment() {
 
         clickMeAlso.setOnClickListener {
 
-            val  navigateTOHome2 = Home1FragmentDirections.actionHome1FragmentToNavigationGraphContent();
 
+            val  navigateTOHome2 = Home1FragmentDirections.actionHome1FragmentToNavigationGraphContent();
+//
             findNavController().navigate(navigateTOHome2)
 
 //            findNavController().graph.get(R.id.navigation_graph_content).navigatorName.plus(navigateTOHome2)

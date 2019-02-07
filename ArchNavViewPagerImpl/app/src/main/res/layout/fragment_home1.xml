@@ -12,7 +12,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Click me also" />
+        android:textAllCaps="false"
+        android:text="Navigate to Home2Fragment" />
 
 
 

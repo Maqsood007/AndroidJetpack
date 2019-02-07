@@ -1,5 +1,4 @@
-package com.google.samples.apps.sunflower.tabbed.home
-
+package com.minhaj.archnavviewpagerimpl.tabbed.home
 
 import android.os.Bundle
 import android.view.KeyEvent
@@ -9,8 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
+import com.minhaj.archnavviewpagerimpl.R
 
-import com.google.samples.apps.sunflower.R
+
 import kotlinx.android.synthetic.main.fragment_home1.*
 
 // TODO: Rename parameter arguments, choose names that match

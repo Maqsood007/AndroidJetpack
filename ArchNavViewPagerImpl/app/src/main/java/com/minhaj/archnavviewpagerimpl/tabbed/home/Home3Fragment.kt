@@ -1,4 +1,4 @@
-package com.google.samples.apps.sunflower.tabbed.home
+package com.minhaj.archnavviewpagerimpl.tabbed.home
 
 
 import android.os.Bundle
@@ -7,11 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
-import com.google.samples.apps.sunflower.R
+
 import android.view.KeyEvent.KEYCODE_BACK
 import android.view.KeyEvent
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
+import com.minhaj.archnavviewpagerimpl.R
 import kotlinx.android.synthetic.main.fragment_home1.*
 
 
@@ -37,31 +38,31 @@ class Home3Fragment : Fragment() {
 
         clickMeAlso.setOnClickListener {
 
-            Navigation.findNavController(it).popBackStack(R.id.home1Fragment,false)
+            findNavController().navigate(Home3FragmentDirections.actionHome3FragmentToHome4Fragment())
 
         }
     }
 
 
-//    override fun onResume() {
-//        super.onResume()
-//
-//        if (view == null) {
-//            return
-//        }
-//
-//        view!!.isFocusableInTouchMode = true
-//        view!!.requestFocus()
-//        view!!.setOnKeyListener(object : View.OnKeyListener {
-//            override fun onKey(v: View, keyCode: Int, event: KeyEvent): Boolean {
-//
-//                return if (event.getAction() === KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK) {
-//                    // handle back button's click listener
-//                    Navigation.findNavController(v).navigateUp()
-//                    true
-//                } else false
-//            }
-//        })
-//    }
+    override fun onResume() {
+        super.onResume()
+
+        if (view == null) {
+            return
+        }
+
+        view!!.isFocusableInTouchMode = true
+        view!!.requestFocus()
+        view!!.setOnKeyListener(object : View.OnKeyListener {
+            override fun onKey(v: View, keyCode: Int, event: KeyEvent): Boolean {
+
+                return if (event.getAction() === KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK) {
+                    // handle back button's click listener
+                    Navigation.findNavController(v).navigateUp()
+                    true
+                } else false
+            }
+        })
+    }
 
 }

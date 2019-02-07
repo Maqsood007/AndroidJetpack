@@ -1,4 +1,4 @@
-package com.google.samples.apps.sunflower.tabbed
+package com.minhaj.archnavviewpagerimpl.tabbed
 
 import android.content.Context
 import android.os.Bundle
@@ -9,10 +9,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.google.samples.apps.sunflower.R
 
 import com.google.samples.apps.sunflower.tabbed.dummy.DummyContent
 import com.google.samples.apps.sunflower.tabbed.dummy.DummyContent.DummyItem
+import com.minhaj.archnavviewpagerimpl.R
 
 /**
  * A fragment representing a list of Items.

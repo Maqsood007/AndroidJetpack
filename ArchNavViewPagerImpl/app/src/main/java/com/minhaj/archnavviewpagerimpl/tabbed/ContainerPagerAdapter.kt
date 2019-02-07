@@ -1,4 +1,4 @@
-package com.google.samples.apps.sunflower.tabbed
+package com.minhaj.archnavviewpagerimpl.tabbed
 
 
 import androidx.fragment.app.Fragment
@@ -6,7 +6,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.fragment.app.FragmentStatePagerAdapter
 import androidx.navigation.findNavController
-import com.google.samples.apps.sunflower.TabbedActivity
+import com.minhaj.archnavviewpagerimpl.TabbedActivity
 
 
 class ContainerPagerAdapter(fragmentManager: FragmentManager, var  activity: TabbedActivity) : FragmentPagerAdapter(fragmentManager) {

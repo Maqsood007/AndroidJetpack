@@ -1,5 +1,6 @@
-package com.google.samples.apps.sunflower.tabbed
+package com.minhaj.archnavviewpagerimpl.tabbed
 
+import android.content.Context
 import android.content.Intent
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -16,14 +17,20 @@ import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.minhaj.archnavviewpagerimpl.PageControllerListener
+import com.minhaj.archnavviewpagerimpl.R
+import com.minhaj.archnavviewpagerimpl.TabbedActivity
 
-import com.google.samples.apps.sunflower.R
-import com.google.samples.apps.sunflower.TabbedActivity
-import com.google.samples.apps.sunflower.tabbed.home.Home2FragmentDirections
+
 import kotlinx.android.synthetic.main.activity_tabbed.*
 import kotlinx.android.synthetic.main.home_fragment.*
 
 class HomeFragment : Fragment() {
+
+
+
+    private  var navControllerListener: PageControllerListener? = null;
+
 
     companion object {
         fun newInstance() = HomeFragment()
@@ -48,6 +55,8 @@ class HomeFragment : Fragment() {
 
         val navController = navHostFragment.navController
 
+        navControllerListener?.setNavController(navController)
+
         val appBarConfig = AppBarConfiguration(navController.graph)
 
 //        (activity as TabbedActivity).toolbar.setupWithNavController(navController, appBarConfig)
@@ -61,6 +70,18 @@ class HomeFragment : Fragment() {
 //                .setPrimaryNavigationFragment(navHostFragment) // this is the equivalent to app:defaultNavHost="true"
 //                .commit()
 
+    }
+
+
+    override fun onAttach(context: Context?) {
+        super.onAttach(context)
+        navControllerListener = context as (PageControllerListener)
+    }
+
+
+    override fun onDetach() {
+        navControllerListener = null
+        super.onDetach()
     }
 
 }

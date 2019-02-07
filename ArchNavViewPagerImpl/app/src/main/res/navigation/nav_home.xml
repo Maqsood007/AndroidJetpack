@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/home1Fragment"
-        android:name="com.google.samples.apps.sunflower.tabbed.home.Home1Fragment"
+        android:name="com.minhaj.archnavviewpagerimpl.tabbed.home.Home1Fragment"
         android:label="fragment_home1"
         tools:layout="@layout/fragment_home1">
         <!--<action-->

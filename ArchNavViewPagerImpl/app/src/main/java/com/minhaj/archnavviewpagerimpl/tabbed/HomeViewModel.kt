@@ -1,4 +1,4 @@
-package com.google.samples.apps.sunflower.tabbed
+package com.minhaj.archnavviewpagerimpl.tabbed
 
 import androidx.lifecycle.ViewModel;
 

@@ -1,15 +1,13 @@
-package com.google.samples.apps.sunflower.tabbed
+package com.minhaj.archnavviewpagerimpl.tabbed
 
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import com.google.samples.apps.sunflower.R
+import com.google.samples.apps.sunflower.tabbed.dummy.DummyContent
+import com.minhaj.archnavviewpagerimpl.R
 
-
-import com.google.samples.apps.sunflower.tabbed.NotificationFragment.OnListFragmentInteractionListener
-import com.google.samples.apps.sunflower.tabbed.dummy.DummyContent.DummyItem
 
 import kotlinx.android.synthetic.main.fragment_notification.view.*
 
@@ -19,15 +17,15 @@ import kotlinx.android.synthetic.main.fragment_notification.view.*
  * TODO: Replace the implementation with code for your data type.
  */
 class MyNotificationRecyclerViewAdapter(
-        private val mValues: List<DummyItem>,
-        private val mListener: OnListFragmentInteractionListener?)
+    private val mValues: List<DummyContent.DummyItem>,
+    private val mListener: NotificationFragment.OnListFragmentInteractionListener?)
     : RecyclerView.Adapter<MyNotificationRecyclerViewAdapter.ViewHolder>() {
 
     private val mOnClickListener: View.OnClickListener
 
     init {
         mOnClickListener = View.OnClickListener { v ->
-            val item = v.tag as DummyItem
+            val item = v.tag as DummyContent.DummyItem
             // Notify the active callbacks interface (the activity, if the fragment is attached to
             // one) that an item has been selected.
             mListener?.onListFragmentInteraction(item)
