@@ -104,7 +104,7 @@ class TabbedActivity : AppCompatActivity(), ViewPager.OnPageChangeListener,
 
 
     override fun setNavController(navController: NavController) {
-
+        Log.v("NavController","setNavController");
         pageNavController = navController
     }
 }
