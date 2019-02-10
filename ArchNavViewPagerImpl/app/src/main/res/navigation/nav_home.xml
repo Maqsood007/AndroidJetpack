@@ -18,6 +18,8 @@
             android:id="@+id/action_home1Fragment_to_navigation_graph_content"
             app:destination="@id/navigation_graph_content"
             app:popUpTo="@+id/home1Fragment" />
+        <action android:id="@+id/action_home1Fragment_to_session_manage_navigation"
+                app:destination="@id/session_manage_navigation"/>
     </fragment>
 
     <!--<fragment-->
@@ -27,4 +29,7 @@
         <!--tools:layout="@layout/fragment_home2" />-->
 
     <include app:graph="@navigation/navigation_graph_content" />
+
+    <include app:graph="@navigation/session_manage_navigation" />
+
 </navigation>

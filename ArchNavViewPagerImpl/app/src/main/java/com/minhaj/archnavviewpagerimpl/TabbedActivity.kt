@@ -59,7 +59,7 @@ class TabbedActivity : AppCompatActivity(), ViewPager.OnPageChangeListener,
 
         setSupportActionBar(toolbar)
 
-        viewPager.offscreenPageLimit = 3
+//        viewPager.offscreenPageLimit = 3
         viewPager.addOnPageChangeListener(this)
         viewPager.adapter = ContainerPagerAdapter(supportFragmentManager, this)
 
@@ -104,7 +104,7 @@ class TabbedActivity : AppCompatActivity(), ViewPager.OnPageChangeListener,
 
 
     override fun setNavController(navController: NavController) {
-
+        Log.v("NavController","setNavController");
         pageNavController = navController
     }
 }
