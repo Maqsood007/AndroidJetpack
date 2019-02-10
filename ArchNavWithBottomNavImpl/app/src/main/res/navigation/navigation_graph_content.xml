@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/navigation_graph_content"
+            app:startDestination="@id/home2Fragment">
+
+
+    <fragment
+            android:id="@+id/home2Fragment"
+            android:name="com.minhaj.archnavviewpagerimpl.tabbed.home.Home2Fragment"
+            android:label="fragment_home2"
+            tools:layout="@layout/fragment_home2">
+        <action
+                android:id="@+id/action_home2Fragment_to_home3Fragment"
+                app:destination="@id/home3Fragment"
+                app:popUpTo="@+id/home2Fragment"/>
+
+        <action android:id="@+id/action_home2Fragment_to_session_manage_navigation"
+                app:destination="@id/session_manage_navigation"
+                app:popUpTo="@+id/home2Fragment"/>
+
+        <action android:id="@+id/action_home2Fragment_to_loginFragment"
+                app:destination="@id/loginFragment"
+                app:popUpTo="@+id/home2Fragment"/>
+
+    </fragment>
+    <fragment
+            android:id="@+id/home3Fragment"
+            android:name="com.minhaj.archnavviewpagerimpl.tabbed.home.Home3Fragment"
+            android:label="fragment_home3"
+            tools:layout="@layout/fragment_home3">
+        <deepLink
+                android:id="@+id/deepLink"
+                android:autoVerify="true"
+                app:uri="app://detailPage.android.com"/>
+        <action
+                android:id="@+id/action_home3Fragment_to_home4Fragment"
+                app:destination="@id/home4Fragment"/>
+    </fragment>
+    <fragment
+            android:id="@+id/home4Fragment"
+            android:name="com.minhaj.archnavviewpagerimpl.tabbed.home.Home4Fragment"
+            android:label="fragment_home4"
+            tools:layout="@layout/fragment_home4"/>
+
+    <include app:graph="@navigation/session_manage_navigation" />
+
+</navigation>
