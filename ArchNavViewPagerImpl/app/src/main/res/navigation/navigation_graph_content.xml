@@ -15,6 +15,15 @@
                 android:id="@+id/action_home2Fragment_to_home3Fragment"
                 app:destination="@id/home3Fragment"
                 app:popUpTo="@+id/home2Fragment"/>
+
+        <action android:id="@+id/action_home2Fragment_to_session_manage_navigation"
+                app:destination="@id/session_manage_navigation"
+                app:popUpTo="@+id/home2Fragment"/>
+
+        <action android:id="@+id/action_home2Fragment_to_loginFragment"
+                app:destination="@id/loginFragment"
+                app:popUpTo="@+id/home2Fragment"/>
+
     </fragment>
     <fragment
             android:id="@+id/home3Fragment"
@@ -35,5 +44,6 @@
             android:label="fragment_home4"
             tools:layout="@layout/fragment_home4"/>
 
+    <include app:graph="@navigation/session_manage_navigation" />
 
 </navigation>

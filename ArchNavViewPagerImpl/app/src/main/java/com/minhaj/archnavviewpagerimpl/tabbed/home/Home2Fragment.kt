@@ -36,7 +36,9 @@ class Home2Fragment : Fragment() {
 
         clickMeAlso.setOnClickListener {
 
-            val  navigateTOHome3 = Home2FragmentDirections.actionHome2FragmentToHome3Fragment();
+            val  navigateTOHome3 = Home2FragmentDirections.actionHome2FragmentToHome3Fragment()
+
+            findNavController().navigatorProvider
 
             findNavController().navigate(navigateTOHome3)
 
