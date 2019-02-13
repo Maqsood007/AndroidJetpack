@@ -71,6 +71,12 @@ class TabbedActivity : AppCompatActivity(),
 
     }
 
+
+    public fun getNavController(): NavController{
+        return Navigation.findNavController(this, R.id.mainNavigationFragment);
+    }
+
+
     override fun onBackPressed() {
             super.onBackPressed()
     }

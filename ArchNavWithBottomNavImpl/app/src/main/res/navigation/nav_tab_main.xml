@@ -10,9 +10,12 @@
         android:name="com.minhaj.archnavviewpagerimpl.tabbed.HomeFragment"
         android:label="home_fragment"
         tools:layout="@layout/home_fragment" >
+
         <action
-            android:id="@+id/action_homeFragment_to_dashboardFragment"
-            app:destination="@id/dashboardFragment" />
+                android:id="@+id/action_homeFragment_to_dashboardFragment"
+                app:destination="@id/dashboardFragment" app:popUpTo="@+id/homeFragment"/>
+        <action android:id="@+id/action_homeFragment_to_navigation_graph_content" app:destination="@id/navigation_graph_content"/>
+
     </fragment>
     <fragment
         android:id="@+id/dashboardFragment"
@@ -20,12 +23,18 @@
         android:label="fragment_dashboard"
         tools:layout="@layout/fragment_dashboard" >
         <action
-            android:id="@+id/action_dashboardFragment_to_notificationFragment"
-            app:destination="@id/notificationFragment" />
+                android:id="@+id/action_dashboardFragment_to_notificationFragment"
+                app:destination="@id/notificationFragment" app:popUpTo="@+id/dashboardFragment"/>
     </fragment>
     <fragment
         android:id="@+id/notificationFragment"
         android:name="com.minhaj.archnavviewpagerimpl.tabbed.NotificationFragment"
         android:label="fragment_notification_list"
         tools:layout="@layout/fragment_notification_list" />
+
+
+
+    <include app:graph="@navigation/navigation_graph_content" />
+
+
 </navigation>

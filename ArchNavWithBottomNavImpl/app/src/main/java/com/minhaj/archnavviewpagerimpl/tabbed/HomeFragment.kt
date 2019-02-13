@@ -20,9 +20,11 @@ import androidx.navigation.ui.setupWithNavController
 import com.minhaj.archnavviewpagerimpl.PageControllerListener
 import com.minhaj.archnavviewpagerimpl.R
 import com.minhaj.archnavviewpagerimpl.TabbedActivity
+//import com.minhaj.archnavviewpagerimpl.tabbed.home.Home1FragmentDirections
 
 
 import kotlinx.android.synthetic.main.activity_tabbed.*
+import kotlinx.android.synthetic.main.fragment_home1.*
 import kotlinx.android.synthetic.main.home_fragment.*
 
 class HomeFragment : Fragment() {
@@ -50,6 +52,14 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
+
+        clickMeAlso2.setOnClickListener {
+
+            val  navigateTOHome1 = HomeFragmentDirections.actionHomeFragmentToNavigationGraphContent();
+//
+            findNavController().navigate(navigateTOHome1)
+
+        }
     }
 
 

@@ -53,7 +53,7 @@ class Home4Fragment : Fragment() {
 
         clickMeAlso.setOnClickListener {
 
-           findNavController().popBackStack(R.id.home1Fragment,false)
+           findNavController().popBackStack(R.id.home2Fragment,false)
 
         }
     }

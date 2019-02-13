@@ -38,9 +38,9 @@ class Home1Fragment : Fragment() {
         clickMeAlso.setOnClickListener {
 
 
-            val  navigateTOHome2 = Home1FragmentDirections.actionHome1FragmentToNavigationGraphContent();
-//
-            findNavController().navigate(navigateTOHome2)
+//            val  navigateTOHome2 = Home1FragmentDirections.actionHome1FragmentToNavigationGraphContent();
+////
+//            findNavController().navigate(navigateTOHome2)
 
 //            findNavController().graph.get(R.id.navigation_graph_content).navigatorName.plus(navigateTOHome2)
 
