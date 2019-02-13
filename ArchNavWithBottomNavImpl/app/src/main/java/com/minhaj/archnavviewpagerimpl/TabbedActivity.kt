@@ -19,13 +19,8 @@ import com.minhaj.archnavviewpagerimpl.tabbed.NotificationFragment
 import kotlinx.android.synthetic.main.activity_tabbed.*
 
 class TabbedActivity : AppCompatActivity(),
-    DashboardFragment.OnFragmentInteractionListener, NotificationFragment.OnListFragmentInteractionListener,
-    PageControllerListener {
+    DashboardFragment.OnFragmentInteractionListener, NotificationFragment.OnListFragmentInteractionListener{
 
-
-    private var prevMenuItem: MenuItem? = null
-
-    private lateinit var pageNavController: NavController;
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
@@ -72,11 +67,6 @@ class TabbedActivity : AppCompatActivity(),
     }
 
 
-    public fun getNavController(): NavController{
-        return Navigation.findNavController(this, R.id.mainNavigationFragment);
-    }
-
-
     override fun onBackPressed() {
             super.onBackPressed()
     }
@@ -90,9 +80,6 @@ class TabbedActivity : AppCompatActivity(),
     }
 
 
-    override fun setNavController(navController: NavController) {
-        Log.v("NavController", "setNavController");
-        pageNavController = navController
-    }
+
 }
 

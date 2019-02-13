@@ -31,9 +31,6 @@ class HomeFragment : Fragment() {
 
 
 
-    private  var navControllerListener: PageControllerListener? = null;
-
-
     companion object {
         fun newInstance() = HomeFragment()
     }
@@ -65,12 +62,10 @@ class HomeFragment : Fragment() {
 
     override fun onAttach(context: Context?) {
         super.onAttach(context)
-        navControllerListener = context as (PageControllerListener)
     }
 
 
     override fun onDetach() {
-        navControllerListener = null
         super.onDetach()
     }
 
