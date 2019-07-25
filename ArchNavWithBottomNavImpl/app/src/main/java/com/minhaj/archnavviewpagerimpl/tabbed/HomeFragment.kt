@@ -17,9 +17,12 @@ import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import androidx.work.OneTimeWorkRequestBuilder
+import androidx.work.PeriodicWorkRequestBuilder
 import com.minhaj.archnavviewpagerimpl.PageControllerListener
 import com.minhaj.archnavviewpagerimpl.R
 import com.minhaj.archnavviewpagerimpl.TabbedActivity
+import com.minhaj.archnavviewpagerimpl.WorkerManger.work.BirthDayWishWork
 //import com.minhaj.archnavviewpagerimpl.tabbed.home.Home1FragmentDirections
 
 
@@ -57,6 +60,10 @@ class HomeFragment : Fragment() {
             findNavController().navigate(navigateTOHome1)
 
         }
+
+
+        val oneTimeWorkerRequest = OneTimeWorkRequestBuilder<BirthDayWishWork>().build()
+
     }
 
 
