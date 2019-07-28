@@ -30,11 +30,15 @@
         android:id="@+id/notificationFragment"
         android:name="com.minhaj.archnavviewpagerimpl.tabbed.NotificationFragment"
         android:label="fragment_notification_list"
-        tools:layout="@layout/fragment_notification_list" />
+        tools:layout="@layout/fragment_notification_list" >
+        <action android:id="@+id/action_notificationFragment_to_nav_tab_notification"
+                app:destination="@id/nav_tab_notification"/>
+    </fragment>
 
 
 
     <include app:graph="@navigation/navigation_graph_content" />
+    <include app:graph="@navigation/nav_tab_notification"/>
 
 
 </navigation>

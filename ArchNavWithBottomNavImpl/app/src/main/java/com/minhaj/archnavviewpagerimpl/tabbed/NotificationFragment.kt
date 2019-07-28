@@ -8,18 +8,30 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Switch
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 
 import com.google.samples.apps.sunflower.tabbed.dummy.DummyContent
 import com.google.samples.apps.sunflower.tabbed.dummy.DummyContent.DummyItem
 import com.minhaj.archnavviewpagerimpl.R
+import com.minhaj.archnavviewpagerimpl.tabbed.viewmodels.NotificationViewModel
+import com.minhaj.archnavviewpagerimpl.utilities.InjectorUtils
+import com.minhaj.archnavviewpagerimpl.utilities.NotificationUtils
+import kotlinx.android.synthetic.main.fragment_notification_list.*
 
 /**
  * A fragment representing a list of Items.
  * Activities containing this fragment MUST implement the
  * [NotificationFragment.OnListFragmentInteractionListener] interface.
  */
-class NotificationFragment : Fragment() {
+class NotificationFragment : Fragment(), View.OnClickListener{
+
+
+    private val viewModel : NotificationViewModel by viewModels{
+        InjectorUtils.provideNotificationViewModel()
+    }
 
     // TODO: Customize parameters
     private var columnCount = 1
@@ -34,21 +46,51 @@ class NotificationFragment : Fragment() {
         }
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onStart() {
+        super.onStart()
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+    }
+
+    override fun onStop() {
+        super.onStop()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         val view = inflater.inflate(R.layout.fragment_notification_list, container, false)
+        return view
+    }
+
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         // Set the adapter
-        if (view is RecyclerView) {
-            with(view) {
-                layoutManager = when {
-                    columnCount <= 1 -> LinearLayoutManager(context)
-                    else -> GridLayoutManager(context, columnCount)
-                }
-                adapter = MyNotificationRecyclerViewAdapter(DummyContent.ITEMS, listener)
+        with(list) {
+
+            println()
+            layoutManager = when {
+                columnCount <= 1 -> LinearLayoutManager(requireContext())
+                else -> GridLayoutManager(requireContext(), columnCount)
             }
+            adapter = MyNotificationRecyclerViewAdapter(DummyContent.ITEMS, listener)
         }
-        return view
+
+        btnAddNotification.setOnClickListener(this)
+
+
     }
 
     override fun onAttach(context: Context) {
@@ -63,6 +105,23 @@ class NotificationFragment : Fragment() {
     override fun onDetach() {
         super.onDetach()
         listener = null
+    }
+
+
+    override fun onClick(v: View?) {
+
+        when(v?.id) {
+
+            R.id.btnAddNotification -> {
+
+//                NotificationUtils.triggerNotification(requireContext())
+
+                val notificationDetail = NotificationFragmentDirections.actionNotificationFragmentToNavTabNotification()
+//
+                findNavController().navigate(notificationDetail)
+            }
+
+        }
     }
 
     /**
@@ -89,10 +148,10 @@ class NotificationFragment : Fragment() {
         // TODO: Customize parameter initialization
         @JvmStatic
         fun newInstance(columnCount: Int) =
-                NotificationFragment().apply {
-                    arguments = Bundle().apply {
-                        putInt(ARG_COLUMN_COUNT, columnCount)
-                    }
+            NotificationFragment().apply ( block = {
+                arguments = Bundle().apply {
+                    putInt(ARG_COLUMN_COUNT, columnCount)
                 }
+            })
     }
 }
