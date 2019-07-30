@@ -12,6 +12,7 @@ import android.widget.Switch
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavArgs
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -24,6 +25,7 @@ import com.minhaj.archnavviewpagerimpl.tabbed.viewmodels.NotificationViewModel
 import com.minhaj.archnavviewpagerimpl.utilities.InjectorUtils
 import com.minhaj.archnavviewpagerimpl.utilities.NotificationUtils
 import kotlinx.android.synthetic.main.fragment_notification_list.*
+import kotlinx.coroutines.launch
 
 /**
  * A fragment representing a list of Items.
@@ -115,7 +117,25 @@ class NotificationFragment : Fragment(), View.OnClickListener{
                 viewModel.addNotification(notification)
             }
 
+
+
+            viewLifecycleOwner.lifecycleScope.launch {
+
+
+
+            }
+
+
         }
+
+        lifecycle;
+
+        lifecycleScope.launch {
+
+        }
+
+
+        viewLifecycleOwnerLiveData
 
 
     }

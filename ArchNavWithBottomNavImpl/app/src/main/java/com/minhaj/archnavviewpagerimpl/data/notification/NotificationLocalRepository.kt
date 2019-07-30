@@ -8,12 +8,13 @@ class NotificationLocalRepository(val notificationDao: NotificationDao) {
 
     fun getNotifications(): LiveData<List<Notification>> = notificationDao.getAllNotification()
 
-    suspend fun addNotification(notification: Notification) : Unit {
+    suspend fun addNotification(notification: Notification) : Long {
 
-        withContext(IO){
+        val returnVal = withContext(IO){
             notificationDao.insertNotification(notification)
         }
 
+        return returnVal
     }
 
 

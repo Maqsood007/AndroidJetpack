@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
@@ -17,6 +18,7 @@ import com.minhaj.archnavviewpagerimpl.tabbed.ContainerPagerAdapter
 import com.minhaj.archnavviewpagerimpl.tabbed.DashboardFragment
 import com.minhaj.archnavviewpagerimpl.tabbed.NotificationFragment
 import kotlinx.android.synthetic.main.activity_tabbed.*
+import kotlinx.coroutines.launch
 
 class TabbedActivity : AppCompatActivity(),
     DashboardFragment.OnFragmentInteractionListener, NotificationFragment.OnListFragmentInteractionListener{
@@ -63,6 +65,12 @@ class TabbedActivity : AppCompatActivity(),
 
         val navigation = findViewById<View>(R.id.navigation) as BottomNavigationView
         NavigationUI.setupWithNavController(navigation, navController)
+
+
+        lifecycleScope.launch {
+
+
+        }
 
     }
 
