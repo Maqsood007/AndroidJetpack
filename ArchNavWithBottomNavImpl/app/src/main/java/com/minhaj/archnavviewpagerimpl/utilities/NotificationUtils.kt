@@ -6,6 +6,7 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.os.Build
+import android.os.Bundle
 import android.provider.Settings.Global.getString
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
@@ -13,6 +14,7 @@ import androidx.core.content.ContextCompat.getSystemService
 import androidx.navigation.NavDeepLinkBuilder
 import com.minhaj.archnavviewpagerimpl.R
 import com.minhaj.archnavviewpagerimpl.TabbedActivity
+import com.minhaj.archnavviewpagerimpl.constants.Constants
 import java.util.*
 
 object NotificationUtils {
@@ -28,10 +30,18 @@ object NotificationUtils {
             }
 //            val pendingIntent: PendingIntent = PendingIntent.getActivity(context, 0, intent, 0)
 
+
+            val bundle = Bundle().apply {
+                putInt(Constants.NOTIFICATION_ID, System.currentTimeMillis().toInt())
+                putString(Constants.NOTIFICATION_TITLE,"My notification")
+                putString(Constants.NOTIFICATION_IMAGE,"https://images.pexels.com/photos/67636/rose-blue-flower-rose-blooms-67636.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500")
+                putString(Constants.NOTIFICATION_MESSAGE, "Much longer text that cannot fit one line...")
+            }
+
             val pendingIntent = NavDeepLinkBuilder(context)
                 .setGraph(R.navigation.nav_tab_main)
                 .setDestination(R.id.notificationFragment)
-                .setArguments(null)
+                .setArguments(bundle)
                 .createPendingIntent()
 
 

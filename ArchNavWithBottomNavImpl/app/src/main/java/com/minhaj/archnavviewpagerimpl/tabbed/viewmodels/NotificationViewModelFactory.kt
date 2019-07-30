@@ -2,9 +2,9 @@ package com.minhaj.archnavviewpagerimpl.tabbed.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.minhaj.archnavviewpagerimpl.tabbed.repos.NotificationRepository
+import com.minhaj.archnavviewpagerimpl.data.notification.NotificationLocalRepository
 
-class NotificationViewModelFactory (private val notificationRepository: NotificationRepository) :
+class NotificationViewModelFactory (private val notificationRepository: NotificationLocalRepository) :
     ViewModelProvider.NewInstanceFactory() {
 
     @Suppress("UNCHECKED_CAST")

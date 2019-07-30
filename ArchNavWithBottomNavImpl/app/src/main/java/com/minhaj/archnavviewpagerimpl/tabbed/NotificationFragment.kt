@@ -11,11 +11,15 @@ import android.view.ViewGroup
 import android.widget.Switch
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
+import androidx.navigation.NavArgs
 import androidx.navigation.fragment.findNavController
-
+import androidx.navigation.fragment.navArgs
 import com.google.samples.apps.sunflower.tabbed.dummy.DummyContent
 import com.google.samples.apps.sunflower.tabbed.dummy.DummyContent.DummyItem
 import com.minhaj.archnavviewpagerimpl.R
+import com.minhaj.archnavviewpagerimpl.constants.Constants.NOTIFICATION_ID_DEFAULT
+import com.minhaj.archnavviewpagerimpl.data.notification.Notification
 import com.minhaj.archnavviewpagerimpl.tabbed.viewmodels.NotificationViewModel
 import com.minhaj.archnavviewpagerimpl.utilities.InjectorUtils
 import com.minhaj.archnavviewpagerimpl.utilities.NotificationUtils
@@ -30,8 +34,13 @@ class NotificationFragment : Fragment(), View.OnClickListener{
 
 
     private val viewModel : NotificationViewModel by viewModels{
-        InjectorUtils.provideNotificationViewModel()
+        InjectorUtils.provideNotificationViewModel(requireContext())
     }
+
+    private val args : NotificationFragmentArgs by navArgs()
+
+
+
 
     // TODO: Customize parameters
     private var columnCount = 1
@@ -91,6 +100,24 @@ class NotificationFragment : Fragment(), View.OnClickListener{
         btnAddNotification.setOnClickListener(this)
 
 
+        viewModel.getNotifications().observe(this, Observer<List<Notification>> {
+
+            print("Notifications::::::::::"+it)
+
+        })
+
+
+        args.notificationId.let {
+
+            if (it != NOTIFICATION_ID_DEFAULT){
+
+                val notification  = Notification(notificationId = args.notificationId, title = args.notificationTitle.toString(), message = args.notificationMessage.toString(), image = args.notificationImage.toString())
+                viewModel.addNotification(notification)
+            }
+
+        }
+
+
     }
 
     override fun onAttach(context: Context) {
@@ -114,11 +141,11 @@ class NotificationFragment : Fragment(), View.OnClickListener{
 
             R.id.btnAddNotification -> {
 
-//                NotificationUtils.triggerNotification(requireContext())
+                NotificationUtils.triggerNotification(requireContext())
 
-                val notificationDetail = NotificationFragmentDirections.actionNotificationFragmentToNavTabNotification()
-//
-                findNavController().navigate(notificationDetail)
+//                val notificationDetail = NotificationFragmentDirections.actionNotificationFragmentToNavTabNotification()
+////
+//                findNavController().navigate(notificationDetail)
             }
 
         }

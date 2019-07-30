@@ -33,6 +33,13 @@
         tools:layout="@layout/fragment_notification_list" >
         <action android:id="@+id/action_notificationFragment_to_nav_tab_notification"
                 app:destination="@id/nav_tab_notification"/>
+        <argument android:name="notification_id" app:argType="integer" android:defaultValue="-1"/>
+        <argument android:name="notification_image" app:argType="string" app:nullable="true"
+                  android:defaultValue="no_value"/>
+        <argument android:name="notification_title" app:argType="string" app:nullable="true"
+                  android:defaultValue="no_value"/>
+        <argument android:name="notification_message" app:argType="string" app:nullable="true"
+                  android:defaultValue="no_value"/>
     </fragment>
 
 
