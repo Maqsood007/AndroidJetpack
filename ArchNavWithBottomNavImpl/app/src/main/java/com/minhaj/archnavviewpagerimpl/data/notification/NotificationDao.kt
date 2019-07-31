@@ -5,15 +5,16 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
 import kotlinx.coroutines.selects.select
+import org.jetbrains.annotations.NotNull
 
 @Dao
 interface NotificationDao {
 
     @Query("select * from notification")
-    fun getAllNotification(): LiveData<List<Notification>>
+    fun getAllNotification(): List<Notification>
 
 
     @Insert
-    fun insertNotification(notification: Notification): Long
+    fun insertNotification(@NotNull notification: Notification): Long
 
 }

@@ -25,14 +25,20 @@ import com.minhaj.archnavviewpagerimpl.tabbed.viewmodels.NotificationViewModel
 import com.minhaj.archnavviewpagerimpl.utilities.InjectorUtils
 import com.minhaj.archnavviewpagerimpl.utilities.NotificationUtils
 import kotlinx.android.synthetic.main.fragment_notification_list.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlin.coroutines.CoroutineContext
 
 /**
  * A fragment representing a list of Items.
  * Activities containing this fragment MUST implement the
  * [NotificationFragment.OnListFragmentInteractionListener] interface.
  */
-class NotificationFragment : Fragment(), View.OnClickListener{
+class NotificationFragment : Fragment(), View.OnClickListener, CoroutineScope{
+
+    override val coroutineContext: CoroutineContext
+        get() = Dispatchers.Main
 
 
     private val viewModel : NotificationViewModel by viewModels{
@@ -102,7 +108,7 @@ class NotificationFragment : Fragment(), View.OnClickListener{
         btnAddNotification.setOnClickListener(this)
 
 
-        viewModel.getNotifications().observe(this, Observer<List<Notification>> {
+        viewModel.notifications.observe(this, Observer<List<Notification>> {
 
             print("Notifications::::::::::"+it)
 
@@ -132,6 +138,8 @@ class NotificationFragment : Fragment(), View.OnClickListener{
 
         lifecycleScope.launch {
 
+            list.visibility = View.GONE
+            list.visibility = View.VISIBLE
         }
 
 
@@ -161,7 +169,14 @@ class NotificationFragment : Fragment(), View.OnClickListener{
 
             R.id.btnAddNotification -> {
 
-                NotificationUtils.triggerNotification(requireContext())
+
+                launch {
+
+                    viewModel.callAsyncWithAwait()
+                }
+
+
+//                NotificationUtils.triggerNotification(requireContext())
 
 //                val notificationDetail = NotificationFragmentDirections.actionNotificationFragmentToNavTabNotification()
 ////

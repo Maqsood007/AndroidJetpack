@@ -1,15 +1,15 @@
 package com.minhaj.archnavviewpagerimpl.tabbed.viewmodels
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import android.util.Log
+import androidx.lifecycle.*
 import com.minhaj.archnavviewpagerimpl.data.notification.Notification
 import com.minhaj.archnavviewpagerimpl.data.notification.NotificationLocalRepository
 import com.minhaj.archnavviewpagerimpl.tabbed.NotificationFragment
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.async
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
+import java.io.IOException
 
 
 /**
@@ -17,11 +17,13 @@ import kotlinx.coroutines.launch
  * @param notificationRepository is [NotificationRepository]
  */
 
-class NotificationViewModel internal constructor(private val notificationRepository: NotificationLocalRepository) : ViewModel(){
+class NotificationViewModel internal constructor(private val notificationRepository: NotificationLocalRepository) :
+    ViewModel() {
 
 
-    fun getNotifications(): LiveData<List<Notification>>{
-        return notificationRepository.getNotifications()
+    val notifications: LiveData<List<Notification>> = liveData {
+        val data = notificationRepository.getNotifications() // loadUser is a suspend function.
+        emit(data)
     }
 
 
@@ -35,11 +37,80 @@ class NotificationViewModel internal constructor(private val notificationReposit
     }
 
 
-    fun addNotification(notification: Notification){
+    fun addNotification(notification: Notification) {
 
         viewModelScope.launch {
             notificationRepository.addNotification(notification)
         }
+
+    }
+
+
+    suspend fun callLaunchWithJoin() {
+
+        val job = viewModelScope.launch {
+
+            Thread.sleep(5000)
+            Log.d("LAUNCH", "Coroutine section")
+//            notificationRepository.getCall()
+//            throw IOException()
+        }
+
+        Log.d("LAUNCH", "Before Join section")
+
+        job.join()
+
+        Log.d("LAUNCH", "After Join section")
+
+    }
+
+
+    suspend fun callLaunchWithoutJoin() {
+
+        viewModelScope.launch {
+
+            Log.d("LAUNCH", "Inside coroutine line code")
+
+            notificationRepository.getCall()
+        }
+
+        Log.d("LAUNCH", "post couritine line code")
+    }
+
+    suspend fun callAsyncWithAwait() {
+
+
+        val value = viewModelScope.async {
+
+            val value = notificationRepository.getCall()
+
+            Log.d("ASYNC", "Inside couritine valu $value")
+
+
+            return@async value
+
+        }
+
+
+        Log.d("ASYNC", "post couritine valu ${value.await()}")
+
+        Log.d("ASYNC", "post couritine join() value ${value.await()}")
+
+    }
+
+
+    suspend fun callAsyncWithOutAwait() {
+
+
+        val value = viewModelScope.async {
+
+            Log.d("ASYNC", "Inside couritine valu ")
+            notificationRepository.getCall()
+
+        }.await()
+
+
+        Log.d("ASYNC", "post couritine value $value")
 
     }
 
