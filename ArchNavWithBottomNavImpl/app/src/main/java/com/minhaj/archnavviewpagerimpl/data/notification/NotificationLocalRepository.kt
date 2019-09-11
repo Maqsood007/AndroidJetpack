@@ -1,8 +1,12 @@
 package com.minhaj.archnavviewpagerimpl.data.notification
 
+import android.media.Image
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.util.concurrent.ThreadLocalRandom
 
 class NotificationLocalRepository(val notificationDao: NotificationDao) {
 
@@ -46,6 +50,36 @@ class NotificationLocalRepository(val notificationDao: NotificationDao) {
         }
 
         return toIntValue
+    }
+
+
+    suspend fun updateImage(image: String){
+
+
+        val notifications =  getNotifications()
+
+//        coroutineScope {
+
+
+            withContext(IO){
+
+
+                val numberMaxRange =  if (notifications.size > 0)  notifications.size else 1
+
+                val randomInteger = ThreadLocalRandom.current().nextInt(0, numberMaxRange)
+
+                notificationDao.updateImage(imageNew = image, imageId = notifications.get(randomInteger).id)
+            }
+
+//            launch {
+//
+//
+//
+//            }
+
+
+//        }
+
     }
 
 

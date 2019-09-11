@@ -46,6 +46,16 @@ class NotificationViewModel internal constructor(private val notificationReposit
     }
 
 
+
+    fun updateImage(image: String) {
+
+        viewModelScope.launch {
+            notificationRepository.updateImage(image)
+        }
+
+    }
+
+
     suspend fun callLaunchWithJoin() {
 
         val job = viewModelScope.launch {

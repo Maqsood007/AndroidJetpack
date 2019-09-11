@@ -2,12 +2,10 @@ package com.minhaj.archnavviewpagerimpl.tabbed
 
 import android.content.Context
 import android.os.Bundle
+import android.view.*
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Switch
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -58,6 +56,7 @@ class NotificationFragment : Fragment(), View.OnClickListener, CoroutineScope{
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        setHasOptionsMenu(true)
         arguments?.let {
             columnCount = it.getInt(ARG_COLUMN_COUNT)
         }
@@ -170,13 +169,13 @@ class NotificationFragment : Fragment(), View.OnClickListener, CoroutineScope{
             R.id.btnAddNotification -> {
 
 
-                launch {
+//                launch {
+//
+//                    viewModel.callAsyncWithAwait()
+//                }
 
-                    viewModel.callAsyncWithAwait()
-                }
 
-
-//                NotificationUtils.triggerNotification(requireContext())
+                NotificationUtils.triggerNotification(requireContext())
 
 //                val notificationDetail = NotificationFragmentDirections.actionNotificationFragmentToNavTabNotification()
 ////
@@ -215,5 +214,27 @@ class NotificationFragment : Fragment(), View.OnClickListener, CoroutineScope{
                     putInt(ARG_COLUMN_COUNT, columnCount)
                 }
             })
+    }
+
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_notification,menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+
+        when(item.itemId){
+
+            R.id.updateNotify ->{
+
+                viewModel.updateImage("fdfhjdhf df jfhjd fjdhjd fjdfh")
+            }
+
+        }
+
+        return false
     }
 }

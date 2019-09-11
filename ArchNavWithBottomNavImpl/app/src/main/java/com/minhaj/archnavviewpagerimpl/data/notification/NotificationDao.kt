@@ -17,4 +17,9 @@ interface NotificationDao {
     @Insert
     fun insertNotification(@NotNull notification: Notification): Long
 
+
+
+    @Query("UPDATE notification SET image = :imageNew where id = :imageId")
+    fun updateImage(imageNew: String, imageId : Long)
+
 }
